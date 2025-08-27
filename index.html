@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Timer & D-Day</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="timer-container">
+      <h1>Timer</h1>
+      <div id="timer-display">00:00:00</div>
+      <button id="startBtn">Start ▶</button>
+      <button id="stopBtn">Stop ⏸</button>
+      <button id="resetBtn">Reset ⏹</button>
+    </div>
+
+    <div id="dday-container">
+      <h1>D-Day</h1>
+      <input type="text" id="dday-title" placeholder="event name" />
+      <input type="date" id="dday-date" />
+      <button id="setDdayBtn">Calculate D-day</button>
+      <h2 id="dday-result"></h2>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>

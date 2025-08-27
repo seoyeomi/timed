@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#timer-container,
+#dday-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#timer-display,
+#dday-result {
+  font-size: 2.5em;
+  margin: 20px 0;
+}
