@@ -1,9 +1,17 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+
+const ddayList = [];
+let mainwindow;
+
+ipcMain.on("add-dday", (event, ddayData) => {
+  ddayList.push(ddayData);
+  console.log("Add new D-day:", ddayData);
+});
 
 function createWindow() {
-  let mainwindow = new BrowserWindow({
+  mainwindow = new BrowserWindow({
     width: 400,
-    height: 300,
+    height: 350,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -23,7 +31,9 @@ function createWindow() {
           },
         },
         { type: "separator" },
-        { label: "Show my calculated Time" },
+        {
+          label: "Show my calculated Time",
+        },
       ],
     },
 
@@ -31,13 +41,31 @@ function createWindow() {
       label: "D-day✨",
       submenu: [
         {
-          label: "Show D-day",
+          label: "D-day Setup",
           click: () => {
             mainwindow.webContents.send("show-dday-setup");
           },
         },
         { type: "separator" },
-        { label: "Show my D-day list" },
+        {
+          label: "Show my D-day list",
+          click: () => {
+            const listWindow = new BrowserWindow({
+              width: 300,
+              height: 400,
+              title: "My D-day list",
+              webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false,
+              },
+            });
+            listWindow.loadFile("dday-list.html");
+
+            listWindow.webContents.once("dom-ready", () => {
+              listWindow.webContents.send("dday-list-data", ddayList);
+            });
+          },
+        },
       ],
     },
 

@@ -14,12 +14,17 @@
       <button id="resetBtn">Reset ⏹</button>
     </div>
 
-    <div id="dday-container">
-      <h1>D-Day</h1>
-      <input type="text" id="dday-title" placeholder="event name" />
-      <input type="date" id="dday-date" />
-      <button id="setDdayBtn">Calculate D-day</button>
-      <h2 id="dday-result"></h2>
+    <div id="dday-container" style="display: none">
+      <div id="dday-setup">
+        <h1>D-Day</h1>
+        <input type="text" id="dday-title" placeholder="event name" />
+        <input type="date" id="dday-date" />
+        <button id="setDdayBtn">Calculate</button>
+      </div>
+      <div id="dday-display-result" style="display: none">
+        <h2 id="dday-result"></h2>
+        <button id="resetDdayBtn">Set New D-day</button>
+      </div>
     </div>
 
     <script src="renderer.js"></script>

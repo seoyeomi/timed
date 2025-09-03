@@ -7,6 +7,9 @@ ipcRenderer.on("show-dday-setup", () => {
   console.log("D-day setting mode");
   timerContainer.style.display = "none";
   ddayContainer.style.display = "flex";
+
+  ddaySetup.style.display = "flex";
+  ddayDisplayResult.style.display = "none";
 });
 
 ipcRenderer.on("show-timer", () => {
@@ -51,32 +54,41 @@ stopBtn.addEventListener("click", () => {
 });
 
 resetBtn.addEventListener("click", () => {
+  ipcRenderer.send("add-to-total-time", seconds);
+
   clearInterval(timer);
   timer = null;
   seconds = 0;
   timerDisplay.textContent = formatTime(seconds);
 });
 
+const ddaySetup = document.getElementById("dday-setup");
+const ddayDisplayResult = document.getElementById("dday-display-result");
+
 const ddayTitleInput = document.getElementById("dday-title");
 const ddayDateInput = document.getElementById("dday-date");
-const setDdayBtn = document.getElementById("setdDayBtn");
+const setDdayBtn = document.getElementById("setDdayBtn");
 const ddayResult = document.getElementById("dday-result");
+const resetDdayBtn = document.getElementById("resetDdayBtn");
 
 setDdayBtn.addEventListener("click", () => {
   const title = ddayTitleInput.value;
-  const targetDate = new Date(ddayDateInput.value);
+  const date = ddayDateInput.value;
+  const targetDate = new Date(date);
   const today = new Date();
 
-  targetDate.setHours(0, 0, 0, 0);
-  today.setHours(0, 0, 0, 0);
-
-  const gap = targetDate.getTime() - today.getTime();
-  const days = Math.ceil(gap / (1000 * 60 * 60 * 24));
-
-  if (!title || !ddayDateInput.value) {
+  if (!title || !date) {
     ddayResult.textContent = "Set your Event & Date ";
     return;
   }
+
+  const ddayData = { title, date };
+  ipcRenderer.send("add-dday", ddayData);
+
+  targetDate.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+  const gap = targetDate.getTime() - today.getTime();
+  const days = Math.ceil(gap / (1000 * 60 * 60 * 24));
 
   if (days === 0) {
     ddayResult.textContent = `${title} D-Day 🎉`;
@@ -85,4 +97,14 @@ setDdayBtn.addEventListener("click", () => {
   } else {
     ddayResult.textContent = `D+${Math.abs(days)} after ${title}`;
   }
+
+  ddaySetup.style.display = "none";
+  ddayDisplayResult.style.display = "flex";
+});
+
+resetDdayBtn.addEventListener("click", () => {
+  ddaySetup.style.display = "flex";
+  ddayDisplayResult.style.display = "none";
+
+  (ddayTitleInput.value = ""), (ddayDateInput.value = "");
 });
