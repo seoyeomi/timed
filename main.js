@@ -1,7 +1,14 @@
 const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 
 const ddayList = [];
+let totalTimerSeconds = 0;
 let mainwindow;
+ipcMain.on("add-to-total-time", (event, sessionSeconds) => {
+  totalTimerSeconds += sessionSeconds;
+  console.log(
+    `Accumulated Time added : ${sessionSeconds}s/ Total accumulated Time: ${totalTimerSeconds}s`
+  );
+});
 
 ipcMain.on("add-dday", (event, ddayData) => {
   ddayList.push(ddayData);
@@ -33,6 +40,26 @@ function createWindow() {
         { type: "separator" },
         {
           label: "Show my calculated Time",
+          click: () => {
+            const totalTimeWindow = new BrowserWindow({
+              width: 300,
+              height: 250,
+              title: "Total accumulated",
+              webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false,
+              },
+            });
+
+            totalTimeWindow.loadFile("total-time.html");
+
+            totalTimeWindow.webContents.once("dom-ready", () => {
+              totalTimeWindow.webContents.send(
+                "total-time-data",
+                totalTimerSeconds
+              );
+            });
+          },
         },
       ],
     },
