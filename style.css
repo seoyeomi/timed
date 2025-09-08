@@ -1,15 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 body {
-  font-family: sans-serif;
+  font-family: "Gowun Dodum", sans-serif;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  text-align: center;
+  background-image: url("https://i.namu.wiki/i/CeDnwdCPLnSgGyfY0unCCgI0_3pq8PBdJ-qq1uqxRwQZhoJNUzvKilvC_CV0zxGwcMNfSy0UrxEDANi_rkNCvy8X4NJXDcTzRd3hoBqu7IqhbHUOm9juibW163a78SM_RqgpCS5GcVsBxjdjdQ8i_g.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #timer-container,
-#dday-container,
+#dday-container {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid white;
+  min-width: 300px;
+}
+
 #dday-setup,
 #dday-display-result {
   display: flex;
@@ -17,40 +31,53 @@ body {
   align-items: center;
 }
 
-h1,
+h1 {
+  color: #e60012;
+  font-size: 2.5em;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
 h2 {
-  color: #333;
+  color: #555;
 }
 
 #timer-display,
 #dday-result {
-  font-size: 2.5em;
-  margin: 20px 0;
-  color: #111;
+  font-size: 3em;
+  font-weight: bold;
+  margin: 15px 0 25px 0;
+  color: #555555;
 }
 
 input {
-  width: 200px;
-  height: 5px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  font-family: "Gowun Dodum", sans-serif;
+  width: 220px;
+  margin: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
   font-size: 1em;
 }
 
 button {
-  min-width: 120px;
-  padding: 10px 15px;
-  margin: 10px 5px;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 1.1em;
+  min-width: 130px;
+  padding: 12px 20px;
+  margin: 8px 5px;
   border: none;
-  border-radius: 8px;
-  background-color: #87c3ff;
-  color: white;
-  font-size: 1em;
+  border-radius: 12px;
+  background-color: #ffc0cb;
+  color: #5d4037;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 
 button:hover {
-  background-color: #57a5ff;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: #fca5b8;
 }
