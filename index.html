@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="UTF-8" />
     <title>My Timer & D-Day</title>
+    <link rel="stylesheet" href="globals.css"/>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="timer-container">
+    <div class="frame" id="home-container">
+      <div class="frame-wrapper">
+        <div class="div">
+          <div class="text-wrapper">Timed</div>
+          <div class="align-justify">
+            <img class="vector" src="img/vector.svg" />
+            <img class="img" src="img/image.svg" />
+            <img class="vector-2" src="img/vector-2.svg" />
+            <img class="vector-3" src="img/vector-3.svg" />
+          </div>
+        </div>
+      </div>
+      <div class="div-2">
+        <img class="element" src="img/kuromi2.png" />
+        <img class="element-2" src="img/kuromi1.png" />
+        <div class="text-wrapper-2">Choose mode</div>
+        <div class="div-wrapper" id="home-select-dday">
+          <div class="text-wrapper-3">D-Day</div>
+        </div>
+        <div class="div-wrapper-2" id="home-select-timer">
+          <div class="text-wrapper-3">Timer</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="timer-container" class="hidden">
       <h1>Timer</h1>
       <div id="timer-display">00:00:00</div>
       <button id="startBtn">Start ▶</button>
@@ -14,14 +41,14 @@
       <button id="resetBtn">Reset ⏹</button>
     </div>
 
-    <div id="dday-container" style="display: none">
+    <div id="dday-container" class="hidden">
       <div id="dday-setup">
         <h1>D-Day</h1>
         <input type="text" id="dday-title" placeholder="event name" />
         <input type="date" id="dday-date" />
         <button id="setDdayBtn">Calculate</button>
       </div>
-      <div id="dday-display-result" style="display: none">
+      <div id="dday-display-result" class="hidden">
         <h2 id="dday-result"></h2>
         <button id="resetDdayBtn">Set New D-day</button>
       </div>

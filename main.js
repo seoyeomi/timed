@@ -3,6 +3,7 @@ const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 const ddayList = [];
 let totalTimerSeconds = 0;
 let mainwindow;
+
 ipcMain.on("add-to-total-time", (event, sessionSeconds) => {
   totalTimerSeconds += sessionSeconds;
   console.log(
@@ -18,7 +19,7 @@ ipcMain.on("add-dday", (event, ddayData) => {
 function createWindow() {
   mainwindow = new BrowserWindow({
     width: 400,
-    height: 350,
+    height: 600,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -28,6 +29,19 @@ function createWindow() {
   mainwindow.loadFile("index.html");
 
   const template = [
+    {
+      lable:"Navigation",
+      submenu:[
+        {
+        label:"Home",
+      click:()=>{
+        mainwindow.webContents.send("show-home");
+      },
+    },
+    {type:"separator"},
+    {role:"quit"},
+  ],
+},
     {
       label: "Timer⏰",
       submenu: [
@@ -94,11 +108,6 @@ function createWindow() {
           },
         },
       ],
-    },
-
-    {
-      label: "App",
-      submenu: [{ role: "quit" }],
     },
   ];
 

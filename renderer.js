@@ -1,21 +1,49 @@
 const { ipcRenderer } = require("electron");
 
+const homeContainer = document.getElementById("home-container");
 const timerContainer = document.getElementById("timer-container");
 const ddayContainer = document.getElementById("dday-container");
 
-ipcRenderer.on("show-dday-setup", () => {
-  console.log("D-day setting mode");
-  timerContainer.style.display = "none";
-  ddayContainer.style.display = "flex";
+const ddaySetup = document.getElementById("dday-setup");
+const ddayDisplayResult = document.getElementById("dday-display-result");
 
-  ddaySetup.style.display = "flex";
-  ddayDisplayResult.style.display = "none";
+const homeSelectTimer = document.getElementById("home-select-timer");
+const homeSelectDday = document.getElementById("home-select-dday");
+
+homeSelectTimer.addEventListener("click", () => {
+  homeContainer.classList.add("hidden");
+  timerContainer.classList.remove("hidden");
+});
+
+homeSelectDday.addEventListener("click", () => {
+  homeContainer.classList.add("hidden");
+  ddayContainer.classList.remove("hidden");
+  ddaySetup.classList.remove("hidden");
+  ddayDisplayResult.classList.add("hidden");
+});
+
+ipcRenderer.on("show-home", () => {
+  console.log("Show Home Screen");
+  homeContainer.classList.remove("hidden");
+  timerContainer.classList.add("hidden");
+  ddayContainer.classList.add("hidden");
 });
 
 ipcRenderer.on("show-timer", () => {
   console.log("Timer setting mode");
-  ddayContainer.style.display = "none";
-  timerContainer.style.display = "flex";
+  homeContainer.classList.add("hidden");
+  ddayContainer.classList.add("hidden");
+  timerContainer.classList.remove("hidden");
+});
+
+ipcRenderer.on("show-dday-setup", () => {
+  console.log("D-day setting mode");
+  homeContainer.classList.add("hidden");
+  timerContainer.classList.add("hidden");
+  ddayContainer.classList.remove("hidden");
+
+  ddaySetup.classList.remove("hidden");
+  ddayDisplayResult.classList.add("hidden");
 });
 
 const timerDisplay = document.getElementById("timer-display");
@@ -62,9 +90,6 @@ resetBtn.addEventListener("click", () => {
   timerDisplay.textContent = formatTime(seconds);
 });
 
-const ddaySetup = document.getElementById("dday-setup");
-const ddayDisplayResult = document.getElementById("dday-display-result");
-
 const ddayTitleInput = document.getElementById("dday-title");
 const ddayDateInput = document.getElementById("dday-date");
 const setDdayBtn = document.getElementById("setDdayBtn");
@@ -98,13 +123,13 @@ setDdayBtn.addEventListener("click", () => {
     ddayResult.textContent = `D+${Math.abs(days)} after ${title}`;
   }
 
-  ddaySetup.style.display = "none";
-  ddayDisplayResult.style.display = "flex";
+  ddaySetup.classList.add("hidden");
+  ddayDisplayResult.classList.remove("hidden");
 });
 
 resetDdayBtn.addEventListener("click", () => {
-  ddaySetup.style.display = "flex";
-  ddayDisplayResult.style.display = "none";
-
-  (ddayTitleInput.value = ""), (ddayDateInput.value = "");
+  ddaySetup.classList.remove("hidden");
+  ddayDisplayResult.classList.add("hidden");
+  ddayTitleInput.value = "";
+  ddayDateInput.value = "";
 });

@@ -1,4 +1,201 @@
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
+
+.frame {
+  width: 400px;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 5px solid;
+  border-color: #d3b8e4;
+}
+
+.frame .frame-wrapper {
+  align-self: flex-end;
+  width: 400px;
+  height: 72px;
+  position: relative;
+  justify-content: center;
+  gap: 167px;
+  background-color: #e5d3f7;
+  border-radius: 5px 5px 0px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.frame .div {
+  width: 353px;
+  justify-content: space-between;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.frame .text-wrapper {
+  position: relative;
+  width: 106px;
+  height: 56px;
+  margin-top: -1.00px;
+  font-family: "Jockey One", sans-serif;
+  font-weight: 400;
+  color: #a46cb6;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .align-justify {
+  position: relative;
+  width: 34px;
+  height: 39px;
+}
+
+.frame .vector {
+  position: absolute;
+  width: 75.00%;
+  height: 0;
+  top: 37.82%;
+  left: 8.09%;
+}
+
+.frame .img {
+  top: 21.15%;
+  position: absolute;
+  width: 75.00%;
+  height: 0;
+  left: 8.09%;
+}
+
+.frame .vector-2 {
+  top: 54.49%;
+  position: absolute;
+  width: 75.00%;
+  height: 0;
+  left: 8.09%;
+}
+
+.frame .vector-3 {
+  top: 71.15%;
+  position: absolute;
+  width: 75.00%;
+  height: 0;
+  left: 8.09%;
+}
+
+.frame .div-2 {
+  height: 388px;
+  position: relative;
+  background-color: #f4ebff;
+  border: 4px solid;
+  border-color: #d3b8e4;
+}
+
+.frame .element {
+  position: absolute;
+  top: 109px;
+  left: 210px;
+  width: 190px;
+  height: 169px;
+  aspect-ratio: 1.14;
+}
+
+.frame .element-2 {
+  position: absolute;
+  top: 85px;
+  left: 7px;
+  width: 177px;
+  height: 193px;
+  aspect-ratio: 0.92;
+}
+
+.frame .text-wrapper-2 {
+  position: absolute;
+  top: 25px;
+  left: 98px;
+  width: 204px;
+  font-family: "Jockey One", sans-serif;
+  font-weight: 400;
+  color: #2e0b39;
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.frame .div-wrapper {
+  width: 128px;
+  height: 62px;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  position: absolute;
+  top: 292px;
+  left: 32px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  border: 3px solid;
+  border-color: #d3b8e4;
+  display: flex;
+  align-items: center;
+}
+
+.frame .text-wrapper-3 {
+  position: relative;
+  width: fit-content;
+  margin-top: -14.00px;
+  margin-bottom: -8.00px;
+  font-family: "Jockey One", sans-serif;
+  font-weight: 400;
+  color: #a46cb6;
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .div-wrapper-2 {
+  width: 128px;
+  height: 62px;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  position: absolute;
+  top: 292px;
+  left: 242px;
+  background-color: #ffffff;
+  border-radius: 100px;
+  border: 3px solid;
+  border-color: #d3b8e4;
+  display: flex;
+  align-items: center;
+}
+
+.root {
+  --background-skyblue: #d3ebf7;
+  --heading-text: #6c8eb6;
+  --icons: #6c8eb6;
+  --white: #ffffff;
+  --border-color: #b8cce4;
+  --timer: #928aff;
+}
+
+#timer-container h1,
+#dday-container h1 {
+  color: var(--heading-text);
+  font-size: 2.5em;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#timer-container h2,
+#dday-container h2 {
+  color: var(--timer);
+}
+
 body {
   font-family: "Gowun Dodum", sans-serif;
   display: flex;
@@ -7,7 +204,6 @@ body {
   height: 100vh;
   margin: 0;
   text-align: center;
-  background-image: url("https://i.namu.wiki/i/CeDnwdCPLnSgGyfY0unCCgI0_3pq8PBdJ-qq1uqxRwQZhoJNUzvKilvC_CV0zxGwcMNfSy0UrxEDANi_rkNCvy8X4NJXDcTzRd3hoBqu7IqhbHUOm9juibW163a78SM_RqgpCS5GcVsBxjdjdQ8i_g.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,11 +212,11 @@ body {
 
 #timer-container,
 #dday-container {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--background-skyblue);
   padding: 30px 40px;
   border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border: 2px solid white;
+  border: 2px solid var(--border-color);
   min-width: 300px;
 }
 
@@ -31,23 +227,12 @@ body {
   align-items: center;
 }
 
-h1 {
-  color: #e60012;
-  font-size: 2.5em;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-h2 {
-  color: #555;
-}
-
 #timer-display,
 #dday-result {
   font-size: 3em;
   font-weight: bold;
   margin: 15px 0 25px 0;
-  color: #555555;
+  color: var(--timer);
 }
 
 input {
@@ -56,7 +241,7 @@ input {
   margin: 8px;
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   text-align: center;
   font-size: 1em;
 }
@@ -69,8 +254,8 @@ button {
   margin: 8px 5px;
   border: none;
   border-radius: 12px;
-  background-color: #ffc0cb;
-  color: #5d4037;
+  background-color: var(--background-skyblue);
+  color: var(--icons);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -79,5 +264,9 @@ button {
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  background-color: #fca5b8;
+  background-color: var(--background-skyblue);
+}
+
+.hidden{
+  display:none !important;
 }
